@@ -2,7 +2,8 @@ FROM boxcar/raring
 
 MAINTAINER Ike Tohru "ike.tohru@gmail.com"
 
-ENV UWSGICONFIG_LUAPC lua5.2
+ENV UWSGICONFIG_LUAPC luajit
+#ENV UWSGICONFIG_LUAPC lua5.2
 
 RUN apt-get -y update
 RUN apt-get install -y -q software-properties-common
@@ -15,12 +16,11 @@ RUN apt-get install -y python
 RUN apt-get install -y python-dev
 RUN apt-get install -y nginx supervisor
 
-#easy_install, pip
-#RUN apt-get install -y python-setuptools
-#RUN easy_install pip
-
-RUN apt-get install -y lua5.2
-RUN apt-get install -y liblua5.2
+RUN apt-get install -y luajit
+RUN apt-get install -y libluajit-5.1
+RUN apt-get install -y liblua5.1
+#RUN apt-get install -y lua5.2
+#RUN apt-get install -y liblua5.2
 
 #RUN apt-get install -y curl
 #RUN curl -O http://projects.unbit.it/downloads/uwsgi-2.0.3.tar.gz
